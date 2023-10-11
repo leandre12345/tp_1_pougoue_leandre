@@ -1,19 +1,20 @@
 <?php
 function validerMotDePasse($motDePasse) {
+    // Vérifier la longueur du mot de passe
     if (strlen($motDePasse) < 6 || strlen($motDePasse) > 10) {
         return "Erreur : Le mot de passe doit avoir entre 6 et 10 caractères.";
     }
-    $salt = "LEA10#";
+    $salt = "ABC1234@";
+
     $motDePasseAdd = $motDePasse . $salt;
 
-    // Chiffrer le mot de passe
-    $motDePasseEncryptage = password_hash($motDePasseAdd, PASSWORD_DEFAULT);
+    $motDePassecrypté = password_hash($motDePasseAdd, PASSWORD_DEFAULT);
 
-    // Retourner le résultat avec le salt et le mot de passe chiffré
+   
     return [
-        'message' => "Salt : $salt, Mot de passe chiffré : $motDePasseEncryptage",
+        'message' => " Acces validé youpii  Votre Salt est: $salt, Mot de passe crypté est : $motDePassecrypté",
         'salt' => $salt,
-        'motDePasseEncryptage' => $motDePasseEncryptage
+        'motDePasseChiffre' => $motDePassecrypté
     ];
 }
 ?>
